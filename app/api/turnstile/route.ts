@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const secretKey = "1x00000000000000000000AA";
+const secretKey = process.env.SECRET_KEY;
 
 export async function POST(request: Request) {
   if (!secretKey) {
