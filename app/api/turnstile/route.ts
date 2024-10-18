@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const secretKey = process.env.SECRET_KEY;
+export const runtime = 'edge';
 
 export async function POST(request: Request) {
   if (!secretKey) {
