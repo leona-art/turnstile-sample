@@ -7,7 +7,7 @@ export default function TurnstileForm() {
         <>
             <div
                 className="cf-turnstile"
-                data-sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+                data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY}
                 style={{
                     margin: "20px"
                 }}
