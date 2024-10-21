@@ -8,17 +8,19 @@ export async function POST(request: Request) {
     return new NextResponse('Turnstile secret key is missing', { status: 500 });
   }
 
-  const { token } = await request.json();
+  const body = await request.formData();
+  // Turnstile injects a token in "cf-turnstile-response".
+  const token = body.get("cf-turnstile-response");
+  const ip = request.headers.get("CF-Connecting-IP");
+
+  let formData = new FormData();
+  formData.append("secret", secretKey);
+  formData.append("response", token!);
+  formData.append("remoteip", ip!);
 
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      secret: secretKey,
-      response: token,
-    }),
+    body: formData,
   });
 
   const data = await response.json();
