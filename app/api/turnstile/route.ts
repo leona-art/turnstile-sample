@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const token = body.get("cf-turnstile-response");
   const ip = request.headers.get("CF-Connecting-IP");
 
-  let formData = new FormData();
+  const formData = new FormData();
   formData.append("secret", secretKey);
   formData.append("response", token!);
   formData.append("remoteip", ip!);
