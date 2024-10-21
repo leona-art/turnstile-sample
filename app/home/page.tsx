@@ -1,5 +1,5 @@
 function Page(){
-  return <div>Success! You're Human right?</div>
+  return <div>Success! You are Human right?</div>
 }
 
 export default Page;
