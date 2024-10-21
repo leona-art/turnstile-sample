@@ -24,7 +24,8 @@ export async function POST(request: Request) {
   const data = await response.json();
 
   if (data.success) {
-    return new NextResponse(JSON.stringify({ success: true }), { status: 200 });
+    // /home にリダイレクト
+    return NextResponse.redirect(new URL('/home', request.url)); 
   } else {
     return new NextResponse(JSON.stringify({ success: false, error: data['error-codes'] }), {
       status: 400,
