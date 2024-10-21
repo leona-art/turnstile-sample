@@ -1,11 +1,11 @@
-
+export const runtime = "edge";
 
 import { validateTurnstile } from '@/actions/turnstile';
 import TurnstileForm from './components/turnstile-form';
 import { useTransition } from 'react';
 
 export default function Home() {
-  
+
   return (
     <main>
       <form action={validateTurnstile}>
